@@ -1,24 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Твой Хит AI — Создай свою песню с помощью нейросети</title>
+
+    <meta name="description" content="Создай свою песню с помощью искусственного интеллекта. Текст, музыка и вокал в одном месте.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #09090f;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #ff3b81;
+        }
+
+        .login {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 25px 70px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 9px 16px;
+            border-radius: 30px;
+            background: rgba(255,59,129,0.12);
+            color: #ff6b9e;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 86px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            max-width: 900px;
+            margin: 0 auto 25px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #ff3b81, #a66cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            max-width: 680px;
+            margin: 0 auto;
+            color: #b7b7c5;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .main-button {
+            display: inline-block;
+            margin-top: 38px;
+            padding: 18px 38px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, #ff3b81, #a66cff);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            box-shadow: 0 12px 35px rgba(255,59,129,0.25);
+        }
+
+        .main-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .free {
+            margin-top: 15px;
+            color: #888894;
+            font-size: 13px;
+        }
+
+        .features {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 20px 25px 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            padding: 28px;
+            background: #12121a;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            text-align: left;
+        }
+
+        .icon {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #9696a5;
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
+        .how {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 25px 100px;
+            text-align: center;
+        }
+
+        .how h2 {
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            position: relative;
+            padding: 25px;
+        }
+
+        .number {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #ff3b81;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #9696a5;
+            line-height: 1.5;
+        }
+
+        .cta {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 55px 25px;
+            text-align: center;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #171321, #11111a);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #a7a7b4;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 30px 7%;
+            color: #777783;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .features,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 70px;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .header {
+                padding: 18px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Твой Хит <span>AI</span></div>
+    <a href="#" class="login">Войти</a>
+</header>
 
 
-body>
+<section class="hero">
 
-    <div class="container">
+    <div class="badge">🎵 Музыка нового поколения</div>
 
-        <h1>🎵 Твой Хит AI</h1>
+    <h1>
+        Создай песню,<br>
+        <span>которая звучит как хит</span>
+    </h1>
 
+    <p class="subtitle">
+        Придумай идею — искусственный интеллект поможет создать
+        текст, музыку и вокал. Всё в одном месте.
+    </p>
+
+    <a href="#" class="main-button">
+        🎤 Создать песню
+    </a>
+
+    <div class="free">
+        🎁 Первая генерация бесплатно
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div class="card">
+        <div class="icon">✍️</div>
+        <h3>Текст</h3>
         <p>
-            Создай свою песню с помощью искусственного интеллекта
+            Напиши идею песни или используй свой текст.
+            AI поможет превратить задумку в полноценную песню.
         </p>
+    </div>
 
+    <div class="card">
+        <div class="icon">🎶</div>
+        <h3>Музыка</h3>
         <p>
-            Текст • Музыка • Вокал
+            Выбирай жанр, настроение и темп,
+            чтобы получить уникальное музыкальное звучание.
         </p>
+    </div>
 
-        <a href="#" class="button">
-            Создать песню
-        </a>
+    <div class="card">
+        <div class="icon">🎤</div>
+        <h3>Вокал</h3>
+        <p>
+            Выбирай подходящий тип вокала
+            и создавай песню с полноценной вокальной партией.
+        </p>
+    </div>
+
+</section>
+
+
+<section class="how">
+
+    <h2>Как это работает?</h2>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="number">1</div>
+            <h3>Придумай</h3>
+            <p>
+                Расскажи, о чём должна быть твоя песня.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="number">2</div>
+            <h3>Настрой</h3>
+            <p>
+                Выбери жанр, настроение и вокал.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="number">3</div>
+            <h3>Получи хит</h3>
+            <p>
+                AI создаст песню, которую можно будет прослушать.
+            </p>
+        </div>
 
     </div>
+
+</section>
+
+
+<section class="cta">
+
+    <h2>Готов создать свою песню?</h2>
+
+    <p>
+        Первая генерация — бесплатно.
+    </p>
+
+    <a href="#" class="main-button">
+        Создать песню
+    </a>
+
+</section>
+
+
+<footer>
+    © 2026 Твой Хит AI · Создание музыки с помощью искусственного интеллекта
+</footer>
 
 </body>
 </html>
