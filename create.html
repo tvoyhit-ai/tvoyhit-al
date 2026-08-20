@@ -1,1 +1,374 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Создать песню — Твой Хит AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #09090f;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #ff3b81;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 55px 20px 80px;
+        }
+
+        .back {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #9999a8;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .block {
+            background: #12121a;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .block-title {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            resize: vertical;
+            background: #09090f;
+            color: white;
+            border: 1px solid #292936;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #ff3b81;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option {
+            background: #191923;
+            color: #ddd;
+            border: 1px solid #30303d;
+            border-radius: 12px;
+            padding: 12px 17px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .option:hover {
+            border-color: #ff3b81;
+        }
+
+        .option.active {
+            background: linear-gradient(90deg, #ff3b81, #a66cff);
+            border-color: transparent;
+            color: white;
+        }
+
+        .generate {
+            width: 100%;
+            border: none;
+            border-radius: 16px;
+            padding: 19px;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #ff3b81, #a66cff);
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .generate:hover {
+            opacity: 0.9;
+        }
+
+        .free {
+            text-align: center;
+            color: #858592;
+            font-size: 13px;
+            margin-top: 13px;
+        }
+
+        .message {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #171722;
+            border: 1px solid #30303d;
+            text-align: center;
+            color: #c7c7d0;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .container {
+                padding-top: 35px;
+            }
+
+            .block {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Твой Хит <span>AI</span>
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <a href="index.html" class="back">
+        ← Вернуться на главную
+    </a>
+
+    <h1>
+        Создать песню 🎵
+    </h1>
+
+    <p class="subtitle">
+        Расскажи, какую песню ты хочешь получить.
+        Настрой её под себя — остальное сделает AI.
+    </p>
+
+
+    <div class="block">
+
+        <div class="block-title">
+            1. О чём будет песня?
+        </div>
+
+        <textarea
+            id="idea"
+            placeholder="Например: сильная девушка начинает новую жизнь и больше никому не позволит собой управлять..."
+        ></textarea>
+
+    </div>
+
+
+    <div class="block">
+
+        <div class="block-title">
+            2. Жанр
+        </div>
+
+        <div class="options">
+
+            <button class="option active">
+                Pop
+            </button>
+
+            <button class="option">
+                Dance Pop
+            </button>
+
+            <button class="option">
+                R&B
+            </button>
+
+            <button class="option">
+                Dream Pop
+            </button>
+
+            <button class="option">
+                Hip-Hop
+            </button>
+
+            <button class="option">
+                Rock
+            </button>
+
+            <button class="option">
+                EDM
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="block">
+
+        <div class="block-title">
+            3. Настроение
+        </div>
+
+        <div class="options">
+
+            <button class="option active">
+                🔥 Зажигательное
+            </button>
+
+            <button class="option">
+                😎 Дерзкое
+            </button>
+
+            <button class="option">
+                ❤️ Романтичное
+            </button>
+
+            <button class="option">
+                💔 Грустное
+            </button>
+
+            <button class="option">
+                🌙 Атмосферное
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="block">
+
+        <div class="block-title">
+            4. Вокал
+        </div>
+
+        <div class="options">
+
+            <button class="option active">
+                👩 Женский
+            </button>
+
+            <button class="option">
+                👨 Мужской
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button class="generate" onclick="createSong()">
+        🎤 Создать песню
+    </button>
+
+    <div class="free">
+        🎁 Первая генерация бесплатно
+    </div>
+
+
+    <div class="message" id="message">
+        ✨ Отлично! Настройки песни сохранены.<br><br>
+        Настоящую генерацию музыки мы подключим следующим этапом.
+    </div>
+
+</div>
+
+
+<script>
+
+    const options = document.querySelectorAll(".option");
+
+    options.forEach(option => {
+
+        option.addEventListener("click", function() {
+
+            const group = this.parentElement;
+
+            group.querySelectorAll(".option").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+        });
+
+    });
+
+
+    function createSong() {
+
+        const idea = document.getElementById("idea").value.trim();
+
+        const message = document.getElementById("message");
+
+        if (idea === "") {
+
+            message.style.display = "block";
+
+            message.innerHTML =
+                "✍️ Сначала напиши, о чём должна быть песня.";
+
+            return;
+
+        }
+
+        message.style.display = "block";
+
+        message.innerHTML =
+            "✨ Отлично! Твоя идея принята.<br><br>" +
+            "Следующим этапом мы подключим настоящую AI-генерацию музыки.";
+
+    }
+
+</script>
+
+</body>
+</html>
