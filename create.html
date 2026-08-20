@@ -7,176 +7,737 @@
 <title>Создать песню — Твой Хит AI</title>
 
 <style>
-body {
-    margin: 0;
-    background: #09090f;
-    color: white;
-    font-family: Arial, sans-serif;
+
+* {
+    box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255, 40, 130, 0.35), transparent 32%),
+        radial-gradient(circle at 85% 20%, rgba(130, 70, 255, 0.35), transparent 32%),
+        radial-gradient(circle at 50% 90%, rgba(255, 90, 190, 0.18), transparent 35%),
+        #080811;
+}
+
+
+/* HEADER */
+
 .header {
-    padding: 20px;
-    border-bottom: 1px solid #292936;
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(8, 8, 17, 0.65);
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .logo {
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .logo span {
-    color: #ff3b81;
+    background: linear-gradient(90deg,#ff3b81,#a66cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+
+/* MAIN */
+
 .container {
-    max-width: 700px;
+    width: 100%;
+    max-width: 900px;
     margin: auto;
-    padding: 50px 20px;
+    padding: 45px 20px 100px;
 }
 
 .back {
     color: #aaa;
     text-decoration: none;
+    font-size: 14px;
 }
 
-h1 {
-    font-size: 42px;
+.back:hover {
+    color: white;
+}
+
+
+/* TITLE */
+
+.title {
+    text-align: center;
     margin-top: 35px;
+    margin-bottom: 45px;
 }
 
-.subtitle {
-    color: #aaa;
+.title .small {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+
+    background: rgba(255,59,129,0.12);
+    color: #ff6b9e;
+
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: clamp(42px,7vw,68px);
+    letter-spacing: -3px;
+}
+
+.title h1 span {
+    background: linear-gradient(90deg,#ff3b81,#a66cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title p {
+    color: #a7a7b5;
     font-size: 18px;
     line-height: 1.5;
+    max-width: 650px;
+    margin: 18px auto 0;
 }
 
-.box {
-    background: #12121a;
-    border: 1px solid #292936;
-    border-radius: 18px;
-    padding: 25px;
-    margin-top: 25px;
+
+/* STEP */
+
+.step {
+    margin-bottom: 22px;
+    padding: 28px;
+
+    background: rgba(18,18,28,0.82);
+
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(15px);
 }
 
-label {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 18px;
+.step-head {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg,#ff3b81,#a66cff);
+
     font-weight: bold;
+}
+
+.step-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* TEXTAREA */
+
+.text-wrapper {
+    position: relative;
 }
 
 textarea {
     width: 100%;
-    min-height: 140px;
-    background: #09090f;
-    color: white;
-    border: 1px solid #333341;
-    border-radius: 12px;
-    padding: 15px;
-    font-size: 16px;
-    resize: vertical;
-}
+    min-height: 190px;
 
-button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 18px;
-    border: none;
-    border-radius: 14px;
-    background: #ff3b81;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#result {
-    display: none;
-    margin-top: 20px;
     padding: 20px;
-    border-radius: 14px;
-    background: #171722;
-    color: #ccc;
+    padding-bottom: 45px;
+
+    resize: vertical;
+
+    border-radius: 17px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    outline: none;
+
+    background: #0c0c15;
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+textarea::placeholder {
+    color: #6f6f7d;
+}
+
+textarea:focus {
+    border-color: #ff3b81;
+
+    box-shadow:
+        0 0 0 3px rgba(255,59,129,0.10);
+}
+
+.counter {
+    position: absolute;
+    bottom: 14px;
+    right: 17px;
+
+    color: #666674;
+    font-size: 12px;
+}
+
+
+/* OPTIONS */
+
+.options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(130px,1fr));
+
+    gap: 12px;
+}
+
+.option {
+    padding: 15px 12px;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background: #10101a;
+
+    color: #cfcfd8;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.option:hover {
+    border-color: #ff3b81;
+    transform: translateY(-2px);
+}
+
+.option.active {
+    background:
+        linear-gradient(135deg,#ff3b81,#a66cff);
+
+    border-color: transparent;
+
+    color: white;
+
+    box-shadow:
+        0 8px 25px rgba(255,59,129,0.22);
+}
+
+
+/* GENERATE */
+
+.generate-box {
+    margin-top: 35px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,59,129,0.12),
+            rgba(166,108,255,0.12)
+        );
+
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.generate {
+    width: 100%;
+
+    padding: 20px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3b81,
+            #a66cff
+        );
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 35px rgba(255,59,129,0.25);
+
+    transition: 0.2s;
+}
+
+.generate:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 40px rgba(255,59,129,0.35);
+}
+
+.free {
+    margin-top: 13px;
+
+    color: #8b8b99;
+
+    font-size: 13px;
+}
+
+
+/* RESULT */
+
+.result {
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: #11111b;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    color: #ddd;
+
+    text-align: center;
+
+    line-height: 1.6;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 18px 20px;
+    }
+
+    .container {
+        padding: 30px 15px 70px;
+    }
+
+    .step {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .title h1 {
+        letter-spacing: -2px;
+    }
+
+    .title p {
+        font-size: 16px;
+    }
+
+    .options {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .option {
+        padding: 14px 8px;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
-<div class="header">
+
+<header class="header">
 
     <div class="logo">
         Твой Хит <span>AI</span>
     </div>
 
-</div>
+</header>
 
 
-<div class="container">
 
-    <a href="index.html" class="back">
-        ← На главную
-    </a>
+<main class="container">
+
+
+<a href="index.html" class="back">
+    ← Вернуться на главную
+</a>
+
+
+
+<section class="title">
+
+    <div class="small">
+        ✨ AI-СТУДИЯ
+    </div>
 
     <h1>
-        Создать песню 🎵
+        Создай свой <span>хит</span>
     </h1>
 
-    <p class="subtitle">
-        Расскажи, какую песню ты хочешь создать.
+    <p>
+        Расскажи, какую песню ты хочешь.
+        Выбери настроение, стиль и вокал —
+        остальное сделает искусственный интеллект.
     </p>
 
+</section>
 
-    <div class="box">
 
-        <label>
+
+<!-- STEP 1 -->
+
+<section class="step">
+
+    <div class="step-head">
+
+        <div class="step-number">
+            1
+        </div>
+
+        <div class="step-title">
             О чём будет песня?
-        </label>
-
-        <textarea
-            id="idea"
-            placeholder="Например: сильная девушка начинает новую жизнь..."
-        ></textarea>
-
-        <button onclick="createSong()">
-            🎤 Создать песню
-        </button>
-
-        <div id="result"></div>
+        </div>
 
     </div>
 
-</div>
+
+    <div class="text-wrapper">
+
+        <textarea
+            id="idea"
+            maxlength="1000"
+            placeholder="Например: сильная девушка начинает новую жизнь, оставляет прошлое и больше никому не позволяет собой управлять..."
+        ></textarea>
+
+        <div class="counter">
+            <span id="count">0</span> / 1000
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- STEP 2 -->
+
+<section class="step">
+
+    <div class="step-head">
+
+        <div class="step-number">
+            2
+        </div>
+
+        <div class="step-title">
+            Какой стиль?
+        </div>
+
+    </div>
+
+
+    <div class="options">
+
+        <button class="option active">
+            🎤 Поп
+        </button>
+
+        <button class="option">
+            💃 Dance Pop
+        </button>
+
+        <button class="option">
+            💜 R&B
+        </button>
+
+        <button class="option">
+            🔥 Hip-Hop
+        </button>
+
+        <button class="option">
+            🌙 Dream Pop
+        </button>
+
+        <button class="option">
+            ⚡ EDM
+        </button>
+
+        <button class="option">
+            🎸 Rock
+        </button>
+
+        <button class="option">
+            💎 Баллада
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- STEP 3 -->
+
+<section class="step">
+
+    <div class="step-head">
+
+        <div class="step-number">
+            3
+        </div>
+
+        <div class="step-title">
+            Какое настроение?
+        </div>
+
+    </div>
+
+
+    <div class="options">
+
+        <button class="option active">
+            🔥 Зажигательное
+        </button>
+
+        <button class="option">
+            😎 Дерзкое
+        </button>
+
+        <button class="option">
+            💎 Уверенное
+        </button>
+
+        <button class="option">
+            ❤️ Романтичное
+        </button>
+
+        <button class="option">
+            💔 Грустное
+        </button>
+
+        <button class="option">
+            🌙 Атмосферное
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- STEP 4 -->
+
+<section class="step">
+
+    <div class="step-head">
+
+        <div class="step-number">
+            4
+        </div>
+
+        <div class="step-title">
+            Выбери вокал
+        </div>
+
+    </div>
+
+
+    <div class="options">
+
+        <button class="option active">
+            👩 Женский
+        </button>
+
+        <button class="option">
+            👨 Мужской
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- STEP 5 -->
+
+<section class="step">
+
+    <div class="step-head">
+
+        <div class="step-number">
+            5
+        </div>
+
+        <div class="step-title">
+            Темп песни
+        </div>
+
+    </div>
+
+
+    <div class="options">
+
+        <button class="option">
+            🌙 Медленный
+        </button>
+
+        <button class="option active">
+            🎵 Средний
+        </button>
+
+        <button class="option">
+            ⚡ Быстрый
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- GENERATE -->
+
+<section class="generate-box">
+
+    <button class="generate" onclick="generateSong()">
+        🎵 Создать мой хит
+    </button>
+
+    <div class="free">
+        🎁 Первая генерация бесплатно
+    </div>
+
+    <div class="result" id="result"></div>
+
+</section>
+
+
+</main>
+
 
 
 <script>
 
-function createSong() {
 
-    let idea = document.getElementById("idea").value;
+/* COUNTER */
 
-    let result = document.getElementById("result");
+const idea = document.getElementById("idea");
 
-    if (idea.trim() === "") {
+const count = document.getElementById("count");
+
+
+idea.addEventListener("input", function() {
+
+    count.textContent = idea.value.length;
+
+});
+
+
+
+/* OPTIONS */
+
+const options = document.querySelectorAll(".option");
+
+
+options.forEach(function(option) {
+
+    option.addEventListener("click", function() {
+
+        const group = this.parentElement;
+
+        group.querySelectorAll(".option").forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+
+/* GENERATE BUTTON */
+
+function generateSong() {
+
+    const result = document.getElementById("result");
+
+    if (idea.value.trim() === "") {
 
         result.style.display = "block";
 
         result.innerHTML =
-            "✍️ Сначала напиши, о чём должна быть песня.";
+            "✍️ Сначала расскажи, о чём должна быть твоя песня.";
 
         return;
+
     }
+
 
     result.style.display = "block";
 
     result.innerHTML =
-        "✨ Отлично! Идея принята.<br><br>" +
-        "Следующим этапом подключим настоящую AI-генерацию.";
+        "✨ Отлично! Все настройки сохранены.<br><br>" +
+        "Твоя идея готова к генерации.<br><br>" +
+        "Следующим этапом подключим настоящую AI-музыку.";
 
 }
 
 </script>
+
 
 </body>
 </html>
