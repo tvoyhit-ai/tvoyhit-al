@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Твой Хит AI</title>
 
 <style>
+
 body {
     margin: 0;
     background: #09090f;
@@ -15,31 +17,42 @@ body {
 }
 
 .container {
+    max-width: 900px;
+    margin: auto;
     padding: 100px 20px;
 }
 
 h1 {
-    font-size: 55px;
+    font-size: 60px;
+    margin-bottom: 20px;
 }
 
-span {
+.gradient {
     color: #ff3b81;
 }
 
 p {
     color: #aaa;
-    font-size: 20px;
+    font-size: 21px;
+    line-height: 1.5;
 }
 
-button {
-    margin-top: 30px;
-    padding: 18px 35px;
-    border: 0;
-    border-radius: 12px;
+.button {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 20px 40px;
     background: #ff3b81;
     color: white;
-    font-size: 18px;
+    text-decoration: none;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: bold;
 }
+
+.button:hover {
+    opacity: 0.85;
+}
+
 </style>
 </head>
 
@@ -47,11 +60,17 @@ button {
 
 <div class="container">
 
-<h1>Твой Хит <span>AI</span></h1>
+<h1>
+Твой Хит <span class="gradient">AI</span>
+</h1>
 
-<p>Создай свою песню с помощью искусственного интеллекта</p>
+<p>
+Создай свою песню с помощью искусственного интеллекта
+</p>
 
-<button>🎵 Создать песню</button>
+<a href="create.html" class="button">
+🎵 Создать песню
+</a>
 
 </div>
 
