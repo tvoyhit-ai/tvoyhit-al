@@ -1,88 +1,240 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Твой Хит — создай свою песню</title>
 
-<title>Твой Хит AI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d12;
+      color: white;
+      min-height: 100vh;
+    }
 
-body {
-    margin: 0;
-    background: #09090f;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 70px;
+    }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 100px 20px;
-}
+    .logo {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
 
-h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
+    .subtitle {
+      text-align: center;
+      color: #aaa;
+      font-size: 17px;
+      margin-bottom: 40px;
+    }
 
-.gradient {
-    color: #ff3b81;
-}
+    .card {
+      background: #17171f;
+      border: 1px solid #292936;
+      border-radius: 24px;
+      padding: 30px;
+    }
 
-p {
-    color: #aaa;
-    font-size: 21px;
-    line-height: 1.5;
-}
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-.button {
-    display: inline-block;
-    margin-top: 35px;
-    padding: 20px 40px;
-    background: #ff3b81;
-    color: white;
-    text-decoration: none;
-    border-radius: 14px;
-    font-size: 20px;
-    font-weight: bold;
-}
+    textarea,
+    select {
+      width: 100%;
+      background: #101017;
+      color: white;
+      border: 1px solid #343442;
+      border-radius: 14px;
+      padding: 15px;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 22px;
+    }
 
-.button:hover {
-    opacity: 0.85;
-}
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
 
-</style>
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .button {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      padding: 17px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #ffffff;
+      color: #111;
+      margin-top: 5px;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #101017;
+      border: 1px solid #343442;
+    }
+
+    .result h2 {
+      margin-top: 0;
+    }
+
+    .status {
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .logo {
+        font-size: 30px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-<h1>
-Твой Хит <span class="gradient">AI</span>
-</h1>
+    <div class="logo">ТВОЙ ХИТ</div>
 
-<p>
-Создай свою песню с помощью искусственного интеллекта
-</p>
+    <div class="subtitle">
+      Создай свою песню с помощью искусственного интеллекта
+    </div>
 
-<div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+    <div class="card">
 
-    <a href="create.html"
-       class="button"
-       style="width:220px; text-align:center;">
-        Создать песню
-    </a>
+      <label for="idea">О чём будет твоя песня?</label>
 
-    <a href="login.html"
-       class="button"
-       style="width:220px; text-align:center;">
-        Войти / Регистрация
-    </a>
+      <textarea
+        id="idea"
+        placeholder="Например: лето, друзья, ночной город и беззаботная вечеринка..."
+      ></textarea>
 
-</div>
+      <div class="row">
+
+        <div>
+          <label for="genre">Жанр</label>
+
+          <select id="genre">
+            <option>Поп</option>
+            <option>Dance Pop</option>
+            <option>Электропоп</option>
+            <option>Рок</option>
+            <option>Хип-хоп</option>
+            <option>R&B</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="mood">Настроение</label>
+
+          <select id="mood">
+            <option>Зажигательное</option>
+            <option>Романтичное</option>
+            <option>Спокойное</option>
+            <option>Энергичное</option>
+            <option>Меланхоличное</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div>
+          <label for="voice">Вокал</label>
+
+          <select id="voice">
+            <option>Женский</option>
+            <option>Мужской</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="tempo">Темп</label>
+
+          <select id="tempo">
+            <option>Медленный</option>
+            <option selected>Средний</option>
+            <option>Быстрый</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button class="button" onclick="createSong()">
+        🎵 Создать песню
+      </button>
+
+      <div class="result" id="result">
+        <h2>Твоя песня</h2>
+        <div class="status" id="status">
+          Готовим генерацию...
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function createSong() {
+
+      const idea = document.getElementById("idea").value.trim();
+
+      if (!idea) {
+        alert("Напиши, о чём должна быть песня.");
+        return;
+      }
+
+      const result = document.getElementById("result");
+      const status = document.getElementById("status");
+
+      result.style.display = "block";
+
+      status.innerText =
+        "🎧 Идея получена. Скоро здесь появится твоя песня.";
+
+    }
+
+  </script>
 
 </body>
 </html>
