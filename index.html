@@ -20,30 +20,22 @@ body {
   margin: 0;
   min-height: 100vh;
 
-  font-family:
-    Inter,
-    Arial,
-    sans-serif;
+  font-family: Arial, sans-serif;
 
-  color: #fff;
+  color: #272321;
 
   background:
     radial-gradient(
-      circle at 50% 25%,
-      rgba(255, 173, 94, .16),
+      circle at 20% 10%,
+      rgba(255, 190, 150, .35),
       transparent 30%
     ),
     radial-gradient(
-      circle at 15% 70%,
-      rgba(255, 82, 128, .10),
+      circle at 85% 20%,
+      rgba(255, 220, 190, .45),
       transparent 30%
     ),
-    radial-gradient(
-      circle at 85% 65%,
-      rgba(255, 190, 100, .08),
-      transparent 30%
-    ),
-    #090909;
+    #f8f4ef;
 
   overflow-x: hidden;
 }
@@ -54,79 +46,87 @@ body {
 ========================= */
 
 .header {
-  width: 100%;
+
   max-width: 1180px;
 
   margin: auto;
 
-  padding: 25px 25px;
+  padding: 24px 25px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 }
 
 .logo {
-  font-size: 25px;
+
+  font-size: 24px;
+
   font-weight: 900;
 
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 
-  color: #fff;
 }
 
 .logo span {
-  color: #ffb45e;
+
+  color: #e77c58;
+
 }
 
 .navigation {
+
   display: flex;
+
   align-items: center;
-  gap: 28px;
+
+  gap: 24px;
+
 }
 
 .navigation a {
-  color: rgba(255,255,255,.65);
+
+  color: #625c58;
 
   text-decoration: none;
 
   font-size: 14px;
 
-  transition: .2s;
 }
 
 .navigation a:hover {
-  color: white;
+
+  color: #e77c58;
+
 }
 
 .login {
-  padding: 10px 18px;
 
-  border-radius: 50px;
+  padding: 10px 17px;
 
-  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 30px;
 
-  background: rgba(255,255,255,.05);
+  border:
+    1px solid #ded6cf;
+
+  background: rgba(255,255,255,.55);
+
 }
 
 .register {
-  padding: 11px 20px;
 
-  border-radius: 50px;
+  padding: 11px 19px;
 
-  color: #111 !important;
+  border-radius: 30px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #ffd18a,
-      #ff9f70
-    );
+  background: #282321;
+
+  color: white !important;
 
   font-weight: 700;
 
-  box-shadow:
-    0 8px 30px rgba(255,160,90,.2);
 }
 
 
@@ -136,13 +136,12 @@ body {
 
 .hero {
 
-  max-width: 1000px;
+  max-width: 900px;
 
   margin: auto;
 
   padding:
-    65px 20px
-    30px;
+    65px 20px 20px;
 
   text-align: center;
 
@@ -152,89 +151,45 @@ body {
 
   display: inline-flex;
 
-  align-items: center;
+  padding:
+    8px 15px;
 
-  gap: 8px;
-
-  padding: 9px 16px;
-
-  border-radius: 50px;
+  border-radius: 30px;
 
   background:
-    rgba(255,255,255,.05);
-
-  border:
-    1px solid rgba(255,255,255,.12);
-
-  color:
     rgba(255,255,255,.7);
 
-  font-size: 13px;
+  border:
+    1px solid #e6ddd5;
 
-  margin-bottom: 30px;
+  color: #8b817a;
+
+  font-size: 12px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 25px;
 
 }
-
-.badge-dot {
-
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #ffb45e;
-
-  box-shadow:
-    0 0 15px #ffb45e;
-}
-
 
 .hero h1 {
 
   margin: 0;
 
   font-size:
-    clamp(48px, 8vw, 92px);
+    clamp(48px, 7vw, 82px);
 
-  line-height: .98;
+  line-height: 1;
 
-  letter-spacing: -4px;
+  letter-spacing: -3px;
 
-  font-weight: 900;
+  font-weight: 800;
 
 }
 
 .hero h1 span {
 
-  background:
-    linear-gradient(
-      90deg,
-      #fff,
-      #ffd18a,
-      #ff927e,
-      #fff
-    );
-
-  background-size: 250%;
-
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
-  animation:
-    shine 5s linear infinite;
-
-}
-
-@keyframes shine {
-
-  0% {
-    background-position: 0%;
-  }
-
-  100% {
-    background-position: 250%;
-  }
+  color: #e77c58;
 
 }
 
@@ -243,12 +198,11 @@ body {
   max-width: 600px;
 
   margin:
-    28px auto 0;
+    25px auto;
 
-  color:
-    rgba(255,255,255,.55);
+  color: #817a75;
 
-  font-size: 18px;
+  font-size: 17px;
 
   line-height: 1.6;
 
@@ -256,14 +210,16 @@ body {
 
 
 /* =========================
-   AI ORB
+   MUSIC WAVE
 ========================= */
 
-.ai-area {
+.wave {
 
-  position: relative;
+  height: 150px;
 
-  height: 360px;
+  max-width: 700px;
+
+  margin: 10px auto 25px;
 
   display: flex;
 
@@ -271,161 +227,54 @@ body {
 
   align-items: center;
 
+  gap: 5px;
+
 }
 
-.orb {
+.bar {
 
-  position: relative;
+  width: 5px;
 
-  width: 180px;
-  height: 180px;
-
-  border-radius: 50%;
+  border-radius: 10px;
 
   background:
-
-    radial-gradient(
-      circle at 35% 30%,
-      #fff3d4,
-      #ffc071 22%,
-      #ff7e76 48%,
-      #2a1515 75%
+    linear-gradient(
+      to top,
+      #e77c58,
+      #f5b18f
     );
 
-  box-shadow:
-
-    0 0 30px rgba(255,174,91,.45),
-
-    0 0 90px rgba(255,117,100,.22),
-
-    inset
-    -20px -20px 50px
-    rgba(0,0,0,.45);
-
   animation:
-    breathe 4s ease-in-out infinite;
+    wave 1.4s ease-in-out infinite;
+
+  opacity: .75;
 
 }
 
-@keyframes breathe {
+.bar:nth-child(1) { height: 25px; animation-delay: .1s; }
+.bar:nth-child(2) { height: 45px; animation-delay: .2s; }
+.bar:nth-child(3) { height: 70px; animation-delay: .3s; }
+.bar:nth-child(4) { height: 95px; animation-delay: .4s; }
+.bar:nth-child(5) { height: 120px; animation-delay: .5s; }
+.bar:nth-child(6) { height: 75px; animation-delay: .6s; }
+.bar:nth-child(7) { height: 105px; animation-delay: .7s; }
+.bar:nth-child(8) { height: 55px; animation-delay: .8s; }
+.bar:nth-child(9) { height: 90px; animation-delay: .9s; }
+.bar:nth-child(10) { height: 115px; animation-delay: 1s; }
+.bar:nth-child(11) { height: 65px; animation-delay: 1.1s; }
+.bar:nth-child(12) { height: 40px; animation-delay: 1.2s; }
+.bar:nth-child(13) { height: 75px; animation-delay: 1.3s; }
+.bar:nth-child(14) { height: 50px; animation-delay: 1.4s; }
+.bar:nth-child(15) { height: 30px; animation-delay: 1.5s; }
+
+@keyframes wave {
 
   0%,100% {
-    transform: scale(1);
+    transform: scaleY(.65);
   }
 
   50% {
-    transform: scale(1.07);
-  }
-
-}
-
-
-/* rings */
-
-.orb::before,
-.orb::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: -35px;
-
-  border-radius: 50%;
-
-  border:
-    1px solid
-    rgba(255,190,120,.15);
-
-  animation:
-    rotate 10s linear infinite;
-
-}
-
-.orb::after {
-
-  inset: -65px;
-
-  border-color:
-    rgba(255,120,110,.08);
-
-  animation-duration:
-    16s;
-
-  animation-direction:
-    reverse;
-
-}
-
-@keyframes rotate {
-
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-
-}
-
-
-/* particles */
-
-.particle {
-
-  position: absolute;
-
-  width: 4px;
-  height: 4px;
-
-  border-radius: 50%;
-
-  background: #ffd18a;
-
-  box-shadow:
-    0 0 12px #ffb45e;
-
-  animation:
-    float 4s ease-in-out infinite;
-
-}
-
-.p1 {
-  left: 20%;
-  top: 25%;
-}
-
-.p2 {
-  right: 22%;
-  top: 35%;
-  animation-delay: 1s;
-}
-
-.p3 {
-  left: 30%;
-  bottom: 22%;
-  animation-delay: 2s;
-}
-
-.p4 {
-  right: 30%;
-  bottom: 25%;
-  animation-delay: 3s;
-}
-
-@keyframes float {
-
-  0%,100% {
-    transform:
-      translateY(0)
-      scale(1);
-  }
-
-  50% {
-    transform:
-      translateY(-25px)
-      scale(1.5);
+    transform: scaleY(1.15);
   }
 
 }
@@ -437,34 +286,33 @@ body {
 
 .create-card {
 
-  max-width: 850px;
+  max-width: 900px;
 
   margin:
-    0 auto 80px;
+    0 auto 70px;
 
-  padding: 32px;
+  padding: 35px;
 
-  border-radius: 30px;
+  border-radius: 28px;
 
   background:
-    rgba(255,255,255,.055);
+    rgba(255,255,255,.72);
 
   border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  backdrop-filter:
-    blur(30px);
+    1px solid rgba(255,255,255,.9);
 
   box-shadow:
-    0 30px 100px
-    rgba(0,0,0,.4);
+    0 25px 70px
+    rgba(91,70,55,.10);
+
+  backdrop-filter:
+    blur(20px);
 
 }
 
 .card-title {
 
-  font-size: 25px;
+  font-size: 27px;
 
   font-weight: 800;
 
@@ -474,17 +322,18 @@ body {
 
 .card-description {
 
-  color:
-    rgba(255,255,255,.45);
-
-  font-size: 14px;
+  color: #8c837c;
 
   margin-bottom: 22px;
+
+  font-size: 14px;
 
 }
 
 
-/* textarea */
+/* =========================
+   TEXTAREA
+========================= */
 
 textarea {
 
@@ -496,18 +345,16 @@ textarea {
 
   padding: 20px;
 
-  border-radius: 20px;
+  border-radius: 18px;
 
   border:
-    1px solid
-    rgba(255,255,255,.12);
+    1px solid #ded6cf;
 
   outline: none;
 
-  color: white;
+  color: #282321;
 
-  background:
-    rgba(0,0,0,.35);
+  background: #faf8f5;
 
   font-size: 16px;
 
@@ -515,19 +362,17 @@ textarea {
 
 textarea:focus {
 
-  border-color:
-    rgba(255,177,100,.55);
+  border-color: #e77c58;
 
   box-shadow:
-    0 0 30px
-    rgba(255,150,80,.08);
+    0 0 0 4px
+    rgba(231,124,88,.10);
 
 }
 
 textarea::placeholder {
 
-  color:
-    rgba(255,255,255,.3);
+  color: #aaa19a;
 
 }
 
@@ -541,7 +386,7 @@ textarea::placeholder {
   display: grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+    repeat(2,1fr);
 
   gap: 15px;
 
@@ -551,27 +396,29 @@ textarea::placeholder {
 
 .option-group {
 
-  padding: 18px;
+  padding: 19px;
 
   border-radius: 18px;
 
   background:
-    rgba(255,255,255,.035);
+    rgba(248,244,239,.75);
 
   border:
-    1px solid
-    rgba(255,255,255,.07);
+    1px solid #e7dfd8;
 
 }
 
 .option-title {
 
-  font-size: 12px;
+  margin-bottom: 13px;
 
-  color:
-    rgba(255,255,255,.4);
+  font-size: 11px;
 
-  margin-bottom: 12px;
+  letter-spacing: 1px;
+
+  color: #a09790;
+
+  font-weight: 700;
 
 }
 
@@ -581,43 +428,47 @@ textarea::placeholder {
 
   flex-wrap: wrap;
 
-  gap: 7px;
+  gap: 8px;
 
 }
 
 .option {
 
-  border: none;
+  border:
+    1px solid #ddd4cc;
 
   border-radius: 50px;
 
   padding:
     9px 13px;
 
-  color:
-    rgba(255,255,255,.65);
+  background: white;
 
-  background:
-    rgba(255,255,255,.07);
+  color: #645d58;
 
   cursor: pointer;
 
   font-size: 13px;
 
+  transition: .2s;
+
+}
+
+.option:hover {
+
+  border-color: #e77c58;
+
+  color: #e77c58;
+
 }
 
 .option.active {
 
-  color: #15100d;
+  background: #282321;
 
-  background:
-    linear-gradient(
-      135deg,
-      #ffd18a,
-      #ff947d
-    );
+  color: white;
 
-  font-weight: 700;
+  border-color: #282321;
 
 }
 
@@ -644,18 +495,18 @@ textarea::placeholder {
 
   font-weight: 800;
 
-  color: #16100c;
+  color: white;
 
   background:
     linear-gradient(
       135deg,
-      #ffe0a6,
-      #ffab78
+      #282321,
+      #4b3e37
     );
 
   box-shadow:
-    0 15px 45px
-    rgba(255,160,90,.2);
+    0 15px 35px
+    rgba(40,35,33,.18);
 
   transition: .25s;
 
@@ -664,11 +515,11 @@ textarea::placeholder {
 .create-button:hover {
 
   transform:
-    translateY(-3px);
+    translateY(-2px);
 
   box-shadow:
-    0 20px 55px
-    rgba(255,160,90,.3);
+    0 20px 45px
+    rgba(40,35,33,.25);
 
 }
 
@@ -679,10 +530,10 @@ textarea::placeholder {
 
 .features {
 
-  max-width: 850px;
+  max-width: 900px;
 
   margin:
-    0 auto 80px;
+    0 auto 70px;
 
   display: grid;
 
@@ -699,14 +550,13 @@ textarea::placeholder {
 
   padding: 22px;
 
-  border-radius: 20px;
+  border-radius: 18px;
 
   background:
-    rgba(255,255,255,.035);
+    rgba(255,255,255,.55);
 
   border:
-    1px solid
-    rgba(255,255,255,.07);
+    1px solid #e9e1da;
 
 }
 
@@ -714,7 +564,7 @@ textarea::placeholder {
 
   font-size: 25px;
 
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 
 }
 
@@ -730,8 +580,7 @@ textarea::placeholder {
 
   margin-top: 6px;
 
-  color:
-    rgba(255,255,255,.4);
+  color: #9b938d;
 
   font-size: 12px;
 
@@ -746,11 +595,9 @@ textarea::placeholder {
 
   text-align: center;
 
-  padding:
-    25px;
+  padding: 25px;
 
-  color:
-    rgba(255,255,255,.25);
+  color: #aaa19b;
 
   font-size: 12px;
 
@@ -772,7 +619,7 @@ textarea::placeholder {
 
   .navigation {
 
-    gap: 8px;
+    gap: 7px;
 
   }
 
@@ -790,36 +637,26 @@ textarea::placeholder {
 
   .hero h1 {
 
-    font-size: 54px;
+    font-size: 52px;
 
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 
   }
 
   .hero p {
 
-    font-size: 16px;
-
-  }
-
-  .ai-area {
-
-    height: 300px;
-
-  }
-
-  .orb {
-
-    width: 140px;
-    height: 140px;
+    font-size: 15px;
 
   }
 
   .create-card {
 
-    padding: 20px;
+    margin:
+      0 15px 50px;
 
-    border-radius: 25px;
+    padding: 21px;
+
+    border-radius: 23px;
 
   }
 
@@ -833,7 +670,32 @@ textarea::placeholder {
 
     grid-template-columns: 1fr;
 
-    padding: 0 15px;
+    margin:
+      0 15px 50px;
+
+  }
+
+}
+
+
+/* =========================
+   SMALLER PHONES
+========================= */
+
+@media(max-width:400px) {
+
+  .hero h1 {
+
+    font-size: 45px;
+
+  }
+
+  .option {
+
+    font-size: 12px;
+
+    padding:
+      8px 11px;
 
   }
 
@@ -849,8 +711,11 @@ textarea::placeholder {
 <header class="header">
 
   <div class="logo">
+
     ТВОЙ <span>ХИТ</span>
+
   </div>
+
 
   <nav class="navigation">
 
@@ -875,14 +740,11 @@ textarea::placeholder {
 </header>
 
 
-<main>
-
 
 <section class="hero">
 
-  <div class="badge">
 
-    <span class="badge-dot"></span>
+  <div class="badge">
 
     AI MUSIC STUDIO
 
@@ -901,8 +763,9 @@ textarea::placeholder {
   <p>
 
     Напиши несколько слов —
-    искусственный интеллект создаст
-    музыку, вокал и атмосферу.
+    выбери настроение, жанр и вокал,
+    а искусственный интеллект создаст
+    твою музыку.
 
   </p>
 
@@ -911,19 +774,25 @@ textarea::placeholder {
 
 
 
-<section class="ai-area">
+<div class="wave">
 
-  <div class="particle p1"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
 
-  <div class="particle p2"></div>
-
-  <div class="particle p3"></div>
-
-  <div class="particle p4"></div>
-
-  <div class="orb"></div>
-
-</section>
+</div>
 
 
 
@@ -949,13 +818,15 @@ textarea::placeholder {
 
   <textarea
     id="idea"
-    placeholder="Например: летняя ночь, город, друзья, свобода, танцы до утра..."
+    placeholder="Например: летняя ночь, город, друзья, свобода и танцы до утра..."
   ></textarea>
 
 
 
   <div class="options">
 
+
+    <!-- ЖАНР -->
 
     <div class="option-group">
 
@@ -968,9 +839,7 @@ textarea::placeholder {
         data-group="genre"
       >
 
-        <button
-          class="option active"
-        >
+        <button class="option active">
           Поп
         </button>
 
@@ -979,11 +848,51 @@ textarea::placeholder {
         </button>
 
         <button class="option">
+          Электропоп
+        </button>
+
+        <button class="option">
+          Synthpop
+        </button>
+
+        <button class="option">
           R&B
         </button>
 
         <button class="option">
-          Электропоп
+          Хип-хоп
+        </button>
+
+        <button class="option">
+          Рэп
+        </button>
+
+        <button class="option">
+          Рок
+        </button>
+
+        <button class="option">
+          Indie Pop
+        </button>
+
+        <button class="option">
+          House
+        </button>
+
+        <button class="option">
+          Disco
+        </button>
+
+        <button class="option">
+          Funk
+        </button>
+
+        <button class="option">
+          Lo-fi
+        </button>
+
+        <button class="option">
+          Drum & Bass
         </button>
 
       </div>
@@ -991,6 +900,8 @@ textarea::placeholder {
     </div>
 
 
+
+    <!-- НАСТРОЕНИЕ -->
 
     <div class="option-group">
 
@@ -1003,10 +914,12 @@ textarea::placeholder {
         data-group="mood"
       >
 
-        <button
-          class="option active"
-        >
+        <button class="option active">
           🔥 Зажигательное
+        </button>
+
+        <button class="option">
+          ☀️ Радостное
         </button>
 
         <button class="option">
@@ -1014,11 +927,39 @@ textarea::placeholder {
         </button>
 
         <button class="option">
+          🌙 Ночное
+        </button>
+
+        <button class="option">
+          💫 Мечтательное
+        </button>
+
+        <button class="option">
           😎 Расслабленное
         </button>
 
         <button class="option">
-          🌙 Ночное
+          ⚡ Энергичное
+        </button>
+
+        <button class="option">
+          🔥 Дерзкое
+        </button>
+
+        <button class="option">
+          🌸 Нежное
+        </button>
+
+        <button class="option">
+          🖤 Меланхоличное
+        </button>
+
+        <button class="option">
+          💎 Стильное
+        </button>
+
+        <button class="option">
+          🌌 Таинственное
         </button>
 
       </div>
@@ -1026,6 +967,8 @@ textarea::placeholder {
     </div>
 
 
+
+    <!-- ВОКАЛ -->
 
     <div class="option-group">
 
@@ -1038,9 +981,7 @@ textarea::placeholder {
         data-group="voice"
       >
 
-        <button
-          class="option active"
-        >
+        <button class="option active">
           Женский
         </button>
 
@@ -1048,11 +989,17 @@ textarea::placeholder {
           Мужской
         </button>
 
+        <button class="option">
+          Дуэт
+        </button>
+
       </div>
 
     </div>
 
 
+
+    <!-- ТЕМП -->
 
     <div class="option-group">
 
@@ -1069,14 +1016,16 @@ textarea::placeholder {
           Медленный
         </button>
 
-        <button
-          class="option active"
-        >
+        <button class="option active">
           Средний
         </button>
 
         <button class="option">
           Быстрый
+        </button>
+
+        <button class="option">
+          Очень быстрый
         </button>
 
       </div>
@@ -1116,24 +1065,7 @@ textarea::placeholder {
     </div>
 
     <div class="feature-text">
-      Опиши свою идею
-    </div>
-
-  </div>
-
-
-  <div class="feature">
-
-    <div class="feature-icon">
-      ◉
-    </div>
-
-    <div class="feature-title">
-      Создай
-    </div>
-
-    <div class="feature-text">
-      ИИ превратит её в музыку
+      Опиши идею будущего трека
     </div>
 
   </div>
@@ -1146,11 +1078,28 @@ textarea::placeholder {
     </div>
 
     <div class="feature-title">
+      Создай
+    </div>
+
+    <div class="feature-text">
+      AI превратит её в музыку
+    </div>
+
+  </div>
+
+
+  <div class="feature">
+
+    <div class="feature-icon">
+      ♫
+    </div>
+
+    <div class="feature-title">
       Слушай
     </div>
 
     <div class="feature-text">
-      Получи готовый трек
+      Получи готовую песню
     </div>
 
   </div>
@@ -1158,8 +1107,6 @@ textarea::placeholder {
 
 </section>
 
-
-</main>
 
 
 <footer class="footer">
@@ -1173,7 +1120,9 @@ textarea::placeholder {
 <script>
 
 
-/* кнопки выбора */
+/* =========================
+   ВЫБОР ПАРАМЕТРОВ
+========================= */
 
 document
   .querySelectorAll(".option-buttons")
@@ -1181,6 +1130,7 @@ document
 
     const buttons =
       group.querySelectorAll(".option");
+
 
     buttons.forEach(button => {
 
@@ -1203,7 +1153,9 @@ document
 
 
 
-/* кнопка создания */
+/* =========================
+   СОЗДАНИЕ ПЕСНИ
+========================= */
 
 function createSong() {
 
@@ -1226,11 +1178,10 @@ function createSong() {
 
 
   alert(
-    "Идея принята ✦\n\nСледующим шагом подключим AI-генерацию."
+    "Идея принята ✦\n\nСледующим шагом подключим настоящую AI-генерацию."
   );
 
 }
-
 
 </script>
 
