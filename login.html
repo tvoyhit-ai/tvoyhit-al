@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Вход — Твой Хит AI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,40,140,.4), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(130,60,255,.4), transparent 30%),
+        #080811;
+}
+
+.box {
+    width: 100%;
+    max-width: 430px;
+    margin: 20px;
+    padding: 30px;
+
+    background: rgba(18,18,29,.92);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 25px;
+}
+
+.logo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.logo span {
+    background: linear-gradient(90deg,#ff3b81,#a66cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    text-align: center;
+    color: #9999a8;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    color: #ccc;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 13px;
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: #0c0c15;
+    color: white;
+
+    outline: none;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #ff3b81;
+}
+
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 17px;
+
+    border: 0;
+    border-radius: 14px;
+
+    background: linear-gradient(90deg,#ff3b81,#a66cff);
+
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.switch {
+    margin-top: 20px;
+    text-align: center;
+    color: #9999a8;
+}
+
+.switch a {
+    color: #ff6398;
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 18px;
+    text-align: center;
+    line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <div class="logo">
+        Твой Хит <span>AI</span>
+    </div>
+
+    <div class="subtitle">
+        Личный кабинет
+    </div>
+
+    <label>Имя</label>
+
+    <input
+        id="name"
+        type="text"
+        placeholder="Как тебя зовут?"
+    >
+
+    <label>Электронная почта</label>
+
+    <input
+        id="email"
+        type="email"
+        placeholder="your@email.com"
+    >
+
+    <label>Пароль</label>
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Минимум 6 символов"
+    >
+
+    <button onclick="register()">
+        ✨ Создать аккаунт
+    </button>
+
+    <div class="switch">
+        Уже есть аккаунт?
+        <a onclick="login()">Войти</a>
+    </div>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+function register() {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("message");
+
+
+    if (!name || !email || !password) {
+
+        message.innerHTML =
+            "Заполни все поля.";
+
+        return;
+    }
+
+
+    if (password.length < 6) {
+
+        message.innerHTML =
+            "Пароль должен содержать минимум 6 символов.";
+
+        return;
+    }
+
+
+    message.innerHTML =
+        "⏳ Подготавливаем регистрацию...";
+
+}
+
+
+function login() {
+
+    document.getElementById("message").innerHTML =
+        "Вход подключим следующим шагом.";
+
+}
+
+</script>
+
+</body>
+</html>
