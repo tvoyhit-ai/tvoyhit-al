@@ -1,240 +1,683 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Твой Хит — создай свою песню</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Твой Хит — создай свою песню</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d0d12;
-      color: white;
-      min-height: 100vh;
-    }
+<style>
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px 70px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .logo {
-      text-align: center;
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 0, 128, .35), transparent 35%),
+    radial-gradient(circle at 85% 15%, rgba(0, 210, 255, .30), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(130, 70, 255, .35), transparent 40%),
+    linear-gradient(135deg, #12051f, #081528 55%, #18051d);
+  overflow-x: hidden;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #aaa;
-      font-size: 17px;
-      margin-bottom: 40px;
-    }
+/* фоновые светящиеся круги */
 
-    .card {
-      background: #17171f;
-      border: 1px solid #292936;
-      border-radius: 24px;
-      padding: 30px;
-    }
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .35;
+  z-index: -1;
+}
 
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
+body::before {
+  background: #ff2da6;
+  top: 10%;
+  left: -100px;
+}
 
-    textarea,
-    select {
-      width: 100%;
-      background: #101017;
-      color: white;
-      border: 1px solid #343442;
-      border-radius: 14px;
-      padding: 15px;
-      font-size: 16px;
-      outline: none;
-      margin-bottom: 22px;
-    }
+body::after {
+  background: #19d9ff;
+  right: -100px;
+  bottom: 5%;
+}
 
-    textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
+/* основной контейнер */
 
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+.container {
+  width: 100%;
+  max-width: 1050px;
+  margin: auto;
+  padding: 30px 20px 80px;
+}
 
-    .button {
-      width: 100%;
-      border: 0;
-      border-radius: 16px;
-      padding: 17px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      background: #ffffff;
-      color: #111;
-      margin-top: 5px;
-    }
+/* шапка */
 
-    .button:hover {
-      opacity: 0.9;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+}
 
-    .result {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 16px;
-      background: #101017;
-      border: 1px solid #343442;
-    }
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
 
-    .result h2 {
-      margin-top: 0;
-    }
+  background: linear-gradient(
+    90deg,
+    #ff4db8,
+    #9d7bff,
+    #29dfff
+  );
 
-    .status {
-      color: #aaa;
-      line-height: 1.5;
-    }
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    @media (max-width: 600px) {
-      .row {
-        grid-template-columns: 1fr;
-      }
+.menu {
+  display: flex;
+  gap: 25px;
+  color: rgba(255,255,255,.75);
+  font-size: 14px;
+}
 
-      .logo {
-        font-size: 30px;
-      }
+/* герой */
 
-      .card {
-        padding: 20px;
-      }
-    }
-  </style>
+.hero {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1;
+  margin: 0 0 20px;
+  font-weight: 900;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #ff8ed1,
+    #8bdfff
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 20px;
+  color: rgba(255,255,255,.68);
+  max-width: 650px;
+  margin: auto;
+}
+
+/* карточка */
+
+.card {
+  position: relative;
+
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  border: 1px solid rgba(255,255,255,.15);
+
+  border-radius: 32px;
+
+  padding: 35px;
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.12);
+}
+
+.card-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  color: rgba(255,255,255,.55);
+  margin-bottom: 25px;
+}
+
+/* поле */
+
+textarea {
+  width: 100%;
+  min-height: 170px;
+
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 22px;
+
+  padding: 20px;
+
+  background: rgba(0,0,0,.20);
+
+  color: white;
+
+  font-size: 17px;
+
+  resize: vertical;
+
+  outline: none;
+}
+
+textarea::placeholder {
+  color: rgba(255,255,255,.4);
+}
+
+textarea:focus {
+  border-color: #ff4db8;
+
+  box-shadow:
+    0 0 0 3px rgba(255,77,184,.12);
+}
+
+/* параметры */
+
+.section {
+  margin-top: 28px;
+}
+
+.section-title {
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 12px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option {
+  border: 1px solid rgba(255,255,255,.15);
+
+  background: rgba(255,255,255,.06);
+
+  color: white;
+
+  border-radius: 50px;
+
+  padding: 11px 17px;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+  font-size: 14px;
+}
+
+.option:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.12);
+}
+
+.option.active {
+  background: linear-gradient(
+    90deg,
+    #ff2fa5,
+    #8d5cff
+  );
+
+  border-color: transparent;
+
+  box-shadow:
+    0 8px 25px rgba(255,47,165,.25);
+}
+
+/* кнопка */
+
+.create {
+  width: 100%;
+
+  margin-top: 35px;
+
+  padding: 19px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff2fa5,
+      #8d5cff,
+      #20d9ff
+    );
+
+  box-shadow:
+    0 15px 40px rgba(255,47,165,.25);
+
+  transition: .25s;
+}
+
+.create:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 20px 50px rgba(100,80,255,.35);
+}
+
+/* результат */
+
+.result {
+  display: none;
+
+  margin-top: 25px;
+
+  padding: 22px;
+
+  border-radius: 20px;
+
+  background: rgba(0,0,0,.25);
+
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.result-title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.status {
+  color: rgba(255,255,255,.6);
+}
+
+/* нижняя часть */
+
+.features {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+.feature {
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,.05);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.feature-text {
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
+}
+
+/* мобильная версия */
+
+@media(max-width:700px) {
+
+  .container {
+    padding: 20px 15px 50px;
+  }
+
+  .header {
+    margin-bottom: 50px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .card {
+    padding: 22px;
+    border-radius: 25px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="logo">ТВОЙ ХИТ</div>
+  <header class="header">
 
-    <div class="subtitle">
-      Создай свою песню с помощью искусственного интеллекта
+    <div class="logo">
+      ТВОЙ ХИТ ✦
     </div>
 
-    <div class="card">
+    <nav class="menu">
+      <span>Как это работает</span>
+      <span>Мои песни</span>
+    </nav>
 
-      <label for="idea">О чём будет твоя песня?</label>
+  </header>
 
-      <textarea
-        id="idea"
-        placeholder="Например: лето, друзья, ночной город и беззаботная вечеринка..."
-      ></textarea>
 
-      <div class="row">
+  <section class="hero">
 
-        <div>
-          <label for="genre">Жанр</label>
+    <h1>
+      Твоя идея.<br>
+      Твой звук.
+    </h1>
 
-          <select id="genre">
-            <option>Поп</option>
-            <option>Dance Pop</option>
-            <option>Электропоп</option>
-            <option>Рок</option>
-            <option>Хип-хоп</option>
-            <option>R&B</option>
-          </select>
-        </div>
+    <p>
+      Создай уникальную песню с помощью искусственного интеллекта.
+      Просто расскажи, что хочешь услышать.
+    </p>
 
-        <div>
-          <label for="mood">Настроение</label>
+  </section>
 
-          <select id="mood">
-            <option>Зажигательное</option>
-            <option>Романтичное</option>
-            <option>Спокойное</option>
-            <option>Энергичное</option>
-            <option>Меланхоличное</option>
-          </select>
-        </div>
+
+  <section class="card">
+
+    <div class="card-title">
+      🎧 Создай свою песню
+    </div>
+
+    <div class="card-subtitle">
+      Опиши настроение, историю или просто набросай пару слов
+    </div>
+
+
+    <textarea
+      id="idea"
+      placeholder="Например: ночной город, друзья, лето, свобода и вечеринка до утра..."
+    ></textarea>
+
+
+    <div class="section">
+
+      <div class="section-title">
+        Жанр
+      </div>
+
+      <div class="options" id="genre">
+
+        <button class="option active">
+          Поп
+        </button>
+
+        <button class="option">
+          Dance Pop
+        </button>
+
+        <button class="option">
+          Электропоп
+        </button>
+
+        <button class="option">
+          R&B
+        </button>
+
+        <button class="option">
+          Хип-хоп
+        </button>
 
       </div>
 
-      <div class="row">
+    </div>
 
-        <div>
-          <label for="voice">Вокал</label>
 
-          <select id="voice">
-            <option>Женский</option>
-            <option>Мужской</option>
-          </select>
-        </div>
+    <div class="section">
 
-        <div>
-          <label for="tempo">Темп</label>
+      <div class="section-title">
+        Настроение
+      </div>
 
-          <select id="tempo">
-            <option>Медленный</option>
-            <option selected>Средний</option>
-            <option>Быстрый</option>
-          </select>
-        </div>
+      <div class="options" id="mood">
+
+        <button class="option active">
+          🔥 Зажигательное
+        </button>
+
+        <button class="option">
+          ✨ Атмосферное
+        </button>
+
+        <button class="option">
+          💎 Стильное
+        </button>
+
+        <button class="option">
+          🌙 Спокойное
+        </button>
 
       </div>
 
-      <button class="button" onclick="createSong()">
-        🎵 Создать песню
-      </button>
+    </div>
 
-      <div class="result" id="result">
-        <h2>Твоя песня</h2>
-        <div class="status" id="status">
-          Готовим генерацию...
-        </div>
+
+    <div class="section">
+
+      <div class="section-title">
+        Вокал
+      </div>
+
+      <div class="options" id="voice">
+
+        <button class="option active">
+          Женский
+        </button>
+
+        <button class="option">
+          Мужской
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-title">
+        Темп
+      </div>
+
+      <div class="options" id="tempo">
+
+        <button class="option">
+          Медленный
+        </button>
+
+        <button class="option active">
+          Средний
+        </button>
+
+        <button class="option">
+          Быстрый
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="create"
+      onclick="createSong()"
+    >
+      ✦ СОЗДАТЬ МОЙ ХИТ
+    </button>
+
+
+    <div
+      class="result"
+      id="result"
+    >
+
+      <div class="result-title">
+        🎵 Генерация началась
+      </div>
+
+      <div
+        class="status"
+        id="status"
+      >
+        Готовим твою песню...
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="features">
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        ✍️
+      </div>
+
+      <div class="feature-text">
+        Придумай идею
+      </div>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        🎶
+      </div>
+
+      <div class="feature-text">
+        ИИ создаст музыку
+      </div>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        🚀
+      </div>
+
+      <div class="feature-text">
+        Получи свой трек
       </div>
 
     </div>
 
   </div>
 
-  <script>
+</div>
 
-    function createSong() {
 
-      const idea = document.getElementById("idea").value.trim();
+<script>
 
-      if (!idea) {
-        alert("Напиши, о чём должна быть песня.");
-        return;
-      }
+function activateOptions(containerId) {
 
-      const result = document.getElementById("result");
-      const status = document.getElementById("status");
+  const container =
+    document.getElementById(containerId);
 
-      result.style.display = "block";
+  const buttons =
+    container.querySelectorAll(".option");
 
-      status.innerText =
-        "🎧 Идея получена. Скоро здесь появится твоя песня.";
+  buttons.forEach(button => {
 
-    }
+    button.addEventListener("click", () => {
 
-  </script>
+      buttons.forEach(b =>
+        b.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+    });
+
+  });
+
+}
+
+
+activateOptions("genre");
+activateOptions("mood");
+activateOptions("voice");
+activateOptions("tempo");
+
+
+function createSong() {
+
+  const idea =
+    document.getElementById("idea").value.trim();
+
+  if (!idea) {
+
+    alert(
+      "Сначала расскажи, о чём должна быть твоя песня ✨"
+    );
+
+    return;
+
+  }
+
+
+  const result =
+    document.getElementById("result");
+
+  const status =
+    document.getElementById("status");
+
+
+  result.style.display = "block";
+
+
+  status.innerText =
+    "🎧 Идея получена. Готовим твою песню...";
+
+}
+
+</script>
 
 </body>
 </html>
