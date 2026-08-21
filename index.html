@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Твой Хит — AI Music</title>
+<title>Твой Хит — AI Music Studio</title>
 
 <style>
 
@@ -20,24 +20,76 @@ body {
   margin: 0;
   min-height: 100vh;
 
-  font-family: Arial, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
-  color: #272321;
+  color: #fff;
 
   background:
     radial-gradient(
-      circle at 20% 10%,
-      rgba(255, 190, 150, .35),
+      circle at 50% -10%,
+      rgba(255, 45, 120, .18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 0% 45%,
+      rgba(255, 80, 40, .08),
       transparent 30%
     ),
     radial-gradient(
-      circle at 85% 20%,
-      rgba(255, 220, 190, .45),
+      circle at 100% 70%,
+      rgba(255, 0, 110, .07),
       transparent 30%
     ),
-    #f8f4ef;
+    #070708;
 
   overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND GRID
+========================= */
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .18;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,.035) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 85%
+    );
+
 }
 
 
@@ -47,32 +99,40 @@ body {
 
 .header {
 
-  max-width: 1180px;
+  width: 100%;
+
+  max-width: 1200px;
 
   margin: auto;
 
-  padding: 24px 25px;
+  padding:
+    22px 24px;
 
   display: flex;
 
+  justify-content: space-between;
+
   align-items: center;
 
-  justify-content: space-between;
+  position: relative;
+
+  z-index: 5;
+
 }
 
 .logo {
 
-  font-size: 24px;
+  font-size: 22px;
 
   font-weight: 900;
 
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 
 }
 
 .logo span {
 
-  color: #e77c58;
+  color: #ff477e;
 
 }
 
@@ -82,48 +142,61 @@ body {
 
   align-items: center;
 
-  gap: 24px;
+  gap: 9px;
 
 }
 
 .navigation a {
 
-  color: #625c58;
+  color:
+    rgba(255,255,255,.55);
 
   text-decoration: none;
 
-  font-size: 14px;
+  font-size: 13px;
+
+  padding:
+    9px 13px;
+
+  transition: .2s;
 
 }
 
 .navigation a:hover {
 
-  color: #e77c58;
+  color: white;
 
 }
 
 .login {
 
-  padding: 10px 17px;
-
-  border-radius: 30px;
-
   border:
-    1px solid #ded6cf;
+    1px solid
+    rgba(255,255,255,.12);
 
-  background: rgba(255,255,255,.55);
+  border-radius: 50px;
+
+  background:
+    rgba(255,255,255,.035);
 
 }
 
 .register {
 
-  padding: 11px 19px;
-
-  border-radius: 30px;
-
-  background: #282321;
-
   color: white !important;
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff3d76,
+      #ff6547
+    );
+
+  box-shadow:
+    0 8px 30px
+    rgba(255,60,110,.20);
 
   font-weight: 700;
 
@@ -136,12 +209,12 @@ body {
 
 .hero {
 
-  max-width: 900px;
+  max-width: 1000px;
 
   margin: auto;
 
   padding:
-    65px 20px 20px;
+    70px 20px 0;
 
   text-align: center;
 
@@ -151,56 +224,89 @@ body {
 
   display: inline-flex;
 
-  padding:
-    8px 15px;
+  align-items: center;
 
-  border-radius: 30px;
+  gap: 8px;
+
+  padding:
+    8px 14px;
+
+  border-radius: 50px;
 
   background:
-    rgba(255,255,255,.7);
+    rgba(255,255,255,.045);
 
   border:
-    1px solid #e6ddd5;
+    1px solid
+    rgba(255,255,255,.10);
 
-  color: #8b817a;
+  color:
+    rgba(255,255,255,.55);
 
-  font-size: 12px;
+  font-size: 11px;
 
-  letter-spacing: 1px;
-
-  margin-bottom: 25px;
+  letter-spacing: 1.5px;
 
 }
 
+.badge-dot {
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #ff416d;
+
+  box-shadow:
+    0 0 12px #ff416d;
+
+}
+
+
 .hero h1 {
 
-  margin: 0;
+  margin:
+    28px 0 0;
 
   font-size:
-    clamp(48px, 7vw, 82px);
+    clamp(52px, 8vw, 92px);
 
-  line-height: 1;
+  line-height: .95;
 
-  letter-spacing: -3px;
+  letter-spacing:
+    -5px;
 
-  font-weight: 800;
+  font-weight: 850;
 
 }
 
 .hero h1 span {
 
-  color: #e77c58;
+  background:
+    linear-gradient(
+      90deg,
+      #ff315f,
+      #ff6a45,
+      #ff9b55
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
 
 }
 
 .hero p {
 
-  max-width: 600px;
+  max-width: 570px;
 
   margin:
-    25px auto;
+    28px auto 0;
 
-  color: #817a75;
+  color:
+    rgba(255,255,255,.48);
 
   font-size: 17px;
 
@@ -210,16 +316,19 @@ body {
 
 
 /* =========================
-   MUSIC WAVE
+   AI VISUALIZER
 ========================= */
 
-.wave {
+.visualizer {
 
-  height: 150px;
+  position: relative;
 
-  max-width: 700px;
+  height: 210px;
 
-  margin: 10px auto 25px;
+  max-width: 800px;
+
+  margin:
+    20px auto 0;
 
   display: flex;
 
@@ -227,54 +336,173 @@ body {
 
   align-items: center;
 
-  gap: 5px;
+  overflow: hidden;
+
+}
+
+.glow {
+
+  position: absolute;
+
+  width: 300px;
+
+  height: 100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 40, 100, .12);
+
+  filter:
+    blur(60px);
+
+}
+
+
+/* waveform */
+
+.wave {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 4px;
+
+  position: relative;
+
+  z-index: 2;
 
 }
 
 .bar {
 
-  width: 5px;
+  width: 3px;
 
   border-radius: 10px;
 
   background:
     linear-gradient(
       to top,
-      #e77c58,
-      #f5b18f
+      #ff285d,
+      #ff8650
     );
 
-  animation:
-    wave 1.4s ease-in-out infinite;
+  box-shadow:
+    0 0 12px
+    rgba(255,70,100,.5);
 
-  opacity: .75;
+  animation:
+    pulse 1.2s ease-in-out infinite;
 
 }
 
-.bar:nth-child(1) { height: 25px; animation-delay: .1s; }
-.bar:nth-child(2) { height: 45px; animation-delay: .2s; }
-.bar:nth-child(3) { height: 70px; animation-delay: .3s; }
-.bar:nth-child(4) { height: 95px; animation-delay: .4s; }
-.bar:nth-child(5) { height: 120px; animation-delay: .5s; }
-.bar:nth-child(6) { height: 75px; animation-delay: .6s; }
-.bar:nth-child(7) { height: 105px; animation-delay: .7s; }
-.bar:nth-child(8) { height: 55px; animation-delay: .8s; }
-.bar:nth-child(9) { height: 90px; animation-delay: .9s; }
-.bar:nth-child(10) { height: 115px; animation-delay: 1s; }
-.bar:nth-child(11) { height: 65px; animation-delay: 1.1s; }
-.bar:nth-child(12) { height: 40px; animation-delay: 1.2s; }
-.bar:nth-child(13) { height: 75px; animation-delay: 1.3s; }
-.bar:nth-child(14) { height: 50px; animation-delay: 1.4s; }
-.bar:nth-child(15) { height: 30px; animation-delay: 1.5s; }
+.bar:nth-child(1) {
+  height: 22px;
+  animation-delay: .05s;
+}
 
-@keyframes wave {
+.bar:nth-child(2) {
+  height: 38px;
+  animation-delay: .10s;
+}
+
+.bar:nth-child(3) {
+  height: 58px;
+  animation-delay: .15s;
+}
+
+.bar:nth-child(4) {
+  height: 80px;
+  animation-delay: .20s;
+}
+
+.bar:nth-child(5) {
+  height: 105px;
+  animation-delay: .25s;
+}
+
+.bar:nth-child(6) {
+  height: 72px;
+  animation-delay: .30s;
+}
+
+.bar:nth-child(7) {
+  height: 125px;
+  animation-delay: .35s;
+}
+
+.bar:nth-child(8) {
+  height: 88px;
+  animation-delay: .40s;
+}
+
+.bar:nth-child(9) {
+  height: 145px;
+  animation-delay: .45s;
+}
+
+.bar:nth-child(10) {
+  height: 100px;
+  animation-delay: .50s;
+}
+
+.bar:nth-child(11) {
+  height: 125px;
+  animation-delay: .55s;
+}
+
+.bar:nth-child(12) {
+  height: 75px;
+  animation-delay: .60s;
+}
+
+.bar:nth-child(13) {
+  height: 110px;
+  animation-delay: .65s;
+}
+
+.bar:nth-child(14) {
+  height: 60px;
+  animation-delay: .70s;
+}
+
+.bar:nth-child(15) {
+  height: 95px;
+  animation-delay: .75s;
+}
+
+.bar:nth-child(16) {
+  height: 45px;
+  animation-delay: .80s;
+}
+
+.bar:nth-child(17) {
+  height: 30px;
+  animation-delay: .85s;
+}
+
+
+@keyframes pulse {
 
   0%,100% {
-    transform: scaleY(.65);
+
+    transform:
+      scaleY(.55);
+
+    opacity: .55;
+
   }
 
   50% {
-    transform: scaleY(1.15);
+
+    transform:
+      scaleY(1.15);
+
+    opacity: 1;
+
   }
 
 }
@@ -289,44 +517,109 @@ body {
   max-width: 900px;
 
   margin:
-    0 auto 70px;
+    0 auto 90px;
 
-  padding: 35px;
+  padding: 34px;
 
-  border-radius: 28px;
+  position: relative;
+
+  border-radius: 30px;
 
   background:
-    rgba(255,255,255,.72);
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.025)
+    );
 
   border:
-    1px solid rgba(255,255,255,.9);
+    1px solid
+    rgba(255,255,255,.11);
 
   box-shadow:
-    0 25px 70px
-    rgba(91,70,55,.10);
+
+    0 40px 120px
+    rgba(0,0,0,.55),
+
+    inset
+    0 1px
+    rgba(255,255,255,.08);
 
   backdrop-filter:
-    blur(20px);
+    blur(30px);
+
+}
+
+
+/* small red glow */
+
+.create-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+
+  height: 180px;
+
+  top: -90px;
+
+  right: -80px;
+
+  background:
+    rgba(255,45,100,.10);
+
+  filter:
+    blur(70px);
+
+  pointer-events: none;
+
+}
+
+
+.card-top {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 24px;
 
 }
 
 .card-title {
 
-  font-size: 27px;
+  font-size: 25px;
 
   font-weight: 800;
 
-  margin-bottom: 8px;
+  letter-spacing: -.5px;
 
 }
 
-.card-description {
+.card-ai {
 
-  color: #8c837c;
+  padding:
+    7px 11px;
 
-  margin-bottom: 22px;
+  border-radius: 30px;
 
-  font-size: 14px;
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  color:
+    #ff6c80;
+
+  background:
+    rgba(255,60,100,.08);
+
+  border:
+    1px solid
+    rgba(255,60,100,.15);
 
 }
 
@@ -339,40 +632,48 @@ textarea {
 
   width: 100%;
 
-  min-height: 150px;
-
-  resize: vertical;
+  min-height: 145px;
 
   padding: 20px;
 
-  border-radius: 18px;
-
-  border:
-    1px solid #ded6cf;
+  resize: vertical;
 
   outline: none;
 
-  color: #282321;
+  color: white;
 
-  background: #faf8f5;
+  background:
+    rgba(0,0,0,.30);
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius: 19px;
+
+  font-family: inherit;
 
   font-size: 16px;
 
-}
-
-textarea:focus {
-
-  border-color: #e77c58;
-
-  box-shadow:
-    0 0 0 4px
-    rgba(231,124,88,.10);
+  transition: .25s;
 
 }
 
 textarea::placeholder {
 
-  color: #aaa19a;
+  color:
+    rgba(255,255,255,.27);
+
+}
+
+textarea:focus {
+
+  border-color:
+    rgba(255,75,110,.55);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(255,50,100,.07);
 
 }
 
@@ -388,35 +689,37 @@ textarea::placeholder {
   grid-template-columns:
     repeat(2,1fr);
 
-  gap: 15px;
+  gap: 14px;
 
-  margin-top: 20px;
+  margin-top: 15px;
 
 }
 
 .option-group {
 
-  padding: 19px;
+  padding: 18px;
 
   border-radius: 18px;
 
   background:
-    rgba(248,244,239,.75);
+    rgba(255,255,255,.035);
 
   border:
-    1px solid #e7dfd8;
+    1px solid
+    rgba(255,255,255,.07);
 
 }
 
 .option-title {
 
-  margin-bottom: 13px;
+  margin-bottom: 12px;
 
-  font-size: 11px;
+  color:
+    rgba(255,255,255,.35);
 
-  letter-spacing: 1px;
+  font-size: 10px;
 
-  color: #a09790;
+  letter-spacing: 1.5px;
 
   font-weight: 700;
 
@@ -428,27 +731,32 @@ textarea::placeholder {
 
   flex-wrap: wrap;
 
-  gap: 8px;
+  gap: 7px;
 
 }
 
 .option {
 
   border:
-    1px solid #ddd4cc;
+    1px solid
+    rgba(255,255,255,.09);
 
   border-radius: 50px;
 
   padding:
     9px 13px;
 
-  background: white;
+  color:
+    rgba(255,255,255,.58);
 
-  color: #645d58;
+  background:
+    rgba(255,255,255,.035);
 
   cursor: pointer;
 
-  font-size: 13px;
+  font-family: inherit;
+
+  font-size: 12px;
 
   transition: .2s;
 
@@ -456,19 +764,33 @@ textarea::placeholder {
 
 .option:hover {
 
-  border-color: #e77c58;
+  color: white;
 
-  color: #e77c58;
+  border-color:
+    rgba(255,70,110,.45);
+
+  background:
+    rgba(255,50,100,.06);
 
 }
 
 .option.active {
 
-  background: #282321;
-
   color: white;
 
-  border-color: #282321;
+  border-color:
+    rgba(255,70,100,.8);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,45,100,.85),
+      rgba(255,95,60,.75)
+    );
+
+  box-shadow:
+    0 5px 20px
+    rgba(255,45,100,.16);
 
 }
 
@@ -481,7 +803,7 @@ textarea::placeholder {
 
   width: 100%;
 
-  margin-top: 25px;
+  margin-top: 20px;
 
   padding: 19px;
 
@@ -489,24 +811,27 @@ textarea::placeholder {
 
   border-radius: 17px;
 
-  cursor: pointer;
-
-  font-size: 17px;
-
-  font-weight: 800;
-
   color: white;
 
   background:
     linear-gradient(
-      135deg,
-      #282321,
-      #4b3e37
+      100deg,
+      #ff285d,
+      #ff514d,
+      #ff884e
     );
 
+  font-family: inherit;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
   box-shadow:
-    0 15px 35px
-    rgba(40,35,33,.18);
+    0 15px 45px
+    rgba(255,45,90,.20);
 
   transition: .25s;
 
@@ -518,8 +843,8 @@ textarea::placeholder {
     translateY(-2px);
 
   box-shadow:
-    0 20px 45px
-    rgba(40,35,33,.25);
+    0 20px 60px
+    rgba(255,45,90,.30);
 
 }
 
@@ -533,36 +858,37 @@ textarea::placeholder {
   max-width: 900px;
 
   margin:
-    0 auto 70px;
+    0 auto 80px;
 
   display: grid;
 
   grid-template-columns:
     repeat(3,1fr);
 
-  gap: 15px;
+  gap: 14px;
 
 }
 
 .feature {
 
+  padding: 23px;
+
+  border-radius: 19px;
+
   text-align: center;
 
-  padding: 22px;
-
-  border-radius: 18px;
-
   background:
-    rgba(255,255,255,.55);
+    rgba(255,255,255,.025);
 
   border:
-    1px solid #e9e1da;
+    1px solid
+    rgba(255,255,255,.06);
 
 }
 
 .feature-icon {
 
-  font-size: 25px;
+  font-size: 22px;
 
   margin-bottom: 9px;
 
@@ -570,9 +896,9 @@ textarea::placeholder {
 
 .feature-title {
 
-  font-weight: 700;
-
   font-size: 14px;
+
+  font-weight: 700;
 
 }
 
@@ -580,7 +906,8 @@ textarea::placeholder {
 
   margin-top: 6px;
 
-  color: #9b938d;
+  color:
+    rgba(255,255,255,.32);
 
   font-size: 12px;
 
@@ -593,13 +920,16 @@ textarea::placeholder {
 
 .footer {
 
+  padding: 30px;
+
   text-align: center;
 
-  padding: 25px;
+  color:
+    rgba(255,255,255,.22);
 
-  color: #aaa19b;
+  font-size: 11px;
 
-  font-size: 12px;
+  letter-spacing: 1px;
 
 }
 
@@ -613,13 +943,13 @@ textarea::placeholder {
   .header {
 
     padding:
-      20px 15px;
+      18px 15px;
 
   }
 
   .navigation {
 
-    gap: 7px;
+    gap: 4px;
 
   }
 
@@ -631,15 +961,17 @@ textarea::placeholder {
 
   .hero {
 
-    padding-top: 45px;
+    padding-top:
+      55px;
 
   }
 
   .hero h1 {
 
-    font-size: 52px;
+    font-size: 54px;
 
-    letter-spacing: -2px;
+    letter-spacing:
+      -3px;
 
   }
 
@@ -649,29 +981,50 @@ textarea::placeholder {
 
   }
 
+  .visualizer {
+
+    height: 170px;
+
+  }
+
   .create-card {
 
     margin:
-      0 15px 50px;
+      0 14px 60px;
 
-    padding: 21px;
+    padding: 20px;
 
-    border-radius: 23px;
+    border-radius: 24px;
+
+  }
+
+  .card-top {
+
+    align-items:
+      flex-start;
+
+  }
+
+  .card-title {
+
+    font-size: 22px;
 
   }
 
   .options {
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
 
   }
 
   .features {
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
 
     margin:
-      0 15px 50px;
+      0 14px 60px;
 
   }
 
@@ -679,23 +1032,23 @@ textarea::placeholder {
 
 
 /* =========================
-   SMALLER PHONES
+   VERY SMALL PHONE
 ========================= */
 
-@media(max-width:400px) {
+@media(max-width:380px) {
 
   .hero h1 {
 
-    font-size: 45px;
+    font-size: 46px;
 
   }
 
-  .option {
-
-    font-size: 12px;
+  .navigation .register {
 
     padding:
-      8px 11px;
+      9px 12px;
+
+    font-size: 12px;
 
   }
 
@@ -720,7 +1073,7 @@ textarea::placeholder {
   <nav class="navigation">
 
     <a href="#create">
-      Создать песню
+      Создать
     </a>
 
     <a href="#">
@@ -746,6 +1099,8 @@ textarea::placeholder {
 
   <div class="badge">
 
+    <span class="badge-dot"></span>
+
     AI MUSIC STUDIO
 
   </div>
@@ -753,19 +1108,17 @@ textarea::placeholder {
 
   <h1>
 
-    Преврати идею<br>
+    Создай свою<br>
 
-    <span>в песню</span>
+    <span>музыку</span>
 
   </h1>
 
 
   <p>
 
-    Напиши несколько слов —
-    выбери настроение, жанр и вокал,
-    а искусственный интеллект создаст
-    твою музыку.
+    От идеи до готового трека —
+    за несколько минут.
 
   </p>
 
@@ -774,23 +1127,31 @@ textarea::placeholder {
 
 
 
-<div class="wave">
+<div class="visualizer">
 
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
+  <div class="glow"></div>
+
+  <div class="wave">
+
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+
+  </div>
 
 </div>
 
@@ -802,23 +1163,26 @@ textarea::placeholder {
 >
 
 
-  <div class="card-title">
+  <div class="card-top">
 
-    ✦ Создай свою песню
+    <div class="card-title">
 
-  </div>
+      ✦ Создай свою песню
 
+    </div>
 
-  <div class="card-description">
+    <div class="card-ai">
 
-    Расскажи, какой ты хочешь её услышать
+      AI POWERED
+
+    </div>
 
   </div>
 
 
   <textarea
     id="idea"
-    placeholder="Например: летняя ночь, город, друзья, свобода и танцы до утра..."
+    placeholder="Опиши свою идею: о чём песня, какая атмосфера, что хочется почувствовать..."
   ></textarea>
 
 
@@ -923,6 +1287,10 @@ textarea::placeholder {
         </button>
 
         <button class="option">
+          ⚡ Энергичное
+        </button>
+
+        <button class="option">
           ✨ Атмосферное
         </button>
 
@@ -936,10 +1304,6 @@ textarea::placeholder {
 
         <button class="option">
           😎 Расслабленное
-        </button>
-
-        <button class="option">
-          ⚡ Энергичное
         </button>
 
         <button class="option">
@@ -1061,11 +1425,28 @@ textarea::placeholder {
     </div>
 
     <div class="feature-title">
-      Придумай
+      Опиши идею
     </div>
 
     <div class="feature-text">
-      Опиши идею будущего трека
+      Несколько слов — достаточно
+    </div>
+
+  </div>
+
+
+  <div class="feature">
+
+    <div class="feature-icon">
+      ◉
+    </div>
+
+    <div class="feature-title">
+      AI создаст трек
+    </div>
+
+    <div class="feature-text">
+      Музыка и вокал
     </div>
 
   </div>
@@ -1078,28 +1459,11 @@ textarea::placeholder {
     </div>
 
     <div class="feature-title">
-      Создай
+      Получи песню
     </div>
 
     <div class="feature-text">
-      AI превратит её в музыку
-    </div>
-
-  </div>
-
-
-  <div class="feature">
-
-    <div class="feature-icon">
-      ♫
-    </div>
-
-    <div class="feature-title">
-      Слушай
-    </div>
-
-    <div class="feature-text">
-      Получи готовую песню
+      Слушай и скачивай
     </div>
 
   </div>
@@ -1121,7 +1485,7 @@ textarea::placeholder {
 
 
 /* =========================
-   ВЫБОР ПАРАМЕТРОВ
+   OPTION BUTTONS
 ========================= */
 
 document
@@ -1154,7 +1518,7 @@ document
 
 
 /* =========================
-   СОЗДАНИЕ ПЕСНИ
+   CREATE SONG
 ========================= */
 
 function createSong() {
@@ -1169,7 +1533,7 @@ function createSong() {
   if (!idea) {
 
     alert(
-      "Напиши несколько слов о своей песне ✦"
+      "Опиши свою идею для песни ✦"
     );
 
     return;
