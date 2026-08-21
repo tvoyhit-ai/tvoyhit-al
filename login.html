@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Вход — Твой Хит AI</title>
+<title>Твой Хит AI — Вход</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 * {
@@ -17,7 +19,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-family: Arial, sans-serif;
     color: white;
 
@@ -32,8 +33,7 @@ body {
     max-width: 430px;
     margin: 20px;
     padding: 30px;
-
-    background: rgba(18,18,29,.92);
+    background: rgba(18,18,29,.95);
     border: 1px solid rgba(255,255,255,.1);
     border-radius: 25px;
 }
@@ -54,7 +54,7 @@ body {
 .subtitle {
     text-align: center;
     color: #9999a8;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 label {
@@ -66,13 +66,10 @@ label {
 input {
     width: 100%;
     padding: 15px;
-
     border-radius: 13px;
     border: 1px solid rgba(255,255,255,.12);
-
     background: #0c0c15;
     color: white;
-
     outline: none;
     font-size: 16px;
 }
@@ -85,17 +82,17 @@ button {
     width: 100%;
     margin-top: 22px;
     padding: 17px;
-
     border: 0;
     border-radius: 14px;
-
     background: linear-gradient(90deg,#ff3b81,#a66cff);
-
     color: white;
     font-size: 17px;
     font-weight: 800;
-
     cursor: pointer;
+}
+
+button:hover {
+    opacity: .9;
 }
 
 .switch {
@@ -114,6 +111,14 @@ button {
     text-align: center;
     line-height: 1.5;
 }
+
+.success {
+    color: #72e6a6;
+}
+
+.error {
+    color: #ff718d;
+}
 </style>
 </head>
 
@@ -126,49 +131,103 @@ button {
     </div>
 
     <div class="subtitle">
-        Личный кабинет
+        Создавай песни с помощью искусственного интеллекта
     </div>
 
-    <label>Имя</label>
+    <div id="registerForm">
 
-    <input
-        id="name"
-        type="text"
-        placeholder="Как тебя зовут?"
-    >
+        <label>Имя</label>
 
-    <label>Электронная почта</label>
+        <input
+            id="name"
+            type="text"
+            placeholder="Как тебя зовут?"
+        >
 
-    <input
-        id="email"
-        type="email"
-        placeholder="your@email.com"
-    >
+        <label>Электронная почта</label>
 
-    <label>Пароль</label>
+        <input
+            id="email"
+            type="email"
+            placeholder="your@email.com"
+        >
 
-    <input
-        id="password"
-        type="password"
-        placeholder="Минимум 6 символов"
-    >
+        <label>Пароль</label>
 
-    <button onclick="register()">
-        ✨ Создать аккаунт
-    </button>
+        <input
+            id="password"
+            type="password"
+            placeholder="Минимум 6 символов"
+        >
 
-    <div class="switch">
-        Уже есть аккаунт?
-        <a onclick="login()">Войти</a>
+        <button onclick="register()">
+            ✨ Создать аккаунт
+        </button>
+
+        <div class="switch">
+            Уже есть аккаунт?
+            <a onclick="showLogin()">Войти</a>
+        </div>
+
     </div>
+
+
+    <div id="loginForm" style="display:none;">
+
+        <label>Электронная почта</label>
+
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="your@email.com"
+        >
+
+        <label>Пароль</label>
+
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Введите пароль"
+        >
+
+        <button onclick="login()">
+            Войти
+        </button>
+
+        <div class="switch">
+            Нет аккаунта?
+            <a onclick="showRegister()">Зарегистрироваться</a>
+        </div>
+
+    </div>
+
 
     <div id="message"></div>
 
 </div>
 
+
 <script>
 
-function register() {
+// ==========================================
+// SUPABASE
+// ==========================================
+
+const SUPABASE_URL ="https://xtzhidllwfteluyxoxva.supabase.co/rest/v1/" ;
+
+const SUPABASE_KEY = "sb_publishable_GUf4hEMO-E7yNdD-BNZFhw_uhgcpRzK";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+// ==========================================
+// РЕГИСТРАЦИЯ
+// ==========================================
+
+async function register() {
 
     const name =
         document.getElementById("name").value.trim();
@@ -183,7 +242,12 @@ function register() {
         document.getElementById("message");
 
 
+    message.className = "";
+
+
     if (!name || !email || !password) {
+
+        message.className = "error";
 
         message.innerHTML =
             "Заполни все поля.";
@@ -194,6 +258,8 @@ function register() {
 
     if (password.length < 6) {
 
+        message.className = "error";
+
         message.innerHTML =
             "Пароль должен содержать минимум 6 символов.";
 
@@ -202,15 +268,136 @@ function register() {
 
 
     message.innerHTML =
-        "⏳ Подготавливаем регистрацию...";
+        "⏳ Создаём аккаунт...";
+
+
+    const { data, error } =
+        await supabaseClient.auth.signUp({
+
+            email: email,
+
+            password: password,
+
+            options: {
+
+                data: {
+                    name: name
+                }
+
+            }
+
+        });
+
+
+    if (error) {
+
+        message.className = "error";
+
+        message.innerHTML =
+            "Ошибка: " + error.message;
+
+        return;
+    }
+
+
+    message.className = "success";
+
+    message.innerHTML =
+        "🎉 Аккаунт создан! Проверь электронную почту и подтверди регистрацию.";
+}
+
+
+// ==========================================
+// ВХОД
+// ==========================================
+
+async function login() {
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const message =
+        document.getElementById("message");
+
+
+    message.className = "";
+
+
+    if (!email || !password) {
+
+        message.className = "error";
+
+        message.innerHTML =
+            "Введи электронную почту и пароль.";
+
+        return;
+    }
+
+
+    message.innerHTML =
+        "⏳ Выполняем вход...";
+
+
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        message.className = "error";
+
+        message.innerHTML =
+            "Ошибка входа: " + error.message;
+
+        return;
+    }
+
+
+    message.className = "success";
+
+    message.innerHTML =
+        "✅ Вход выполнен!";
 
 }
 
 
-function login() {
+// ==========================================
+// ПЕРЕКЛЮЧЕНИЕ ФОРМ
+// ==========================================
+
+function showLogin() {
+
+    document.getElementById("registerForm").style.display =
+        "none";
+
+    document.getElementById("loginForm").style.display =
+        "block";
 
     document.getElementById("message").innerHTML =
-        "Вход подключим следующим шагом.";
+        "";
+
+}
+
+
+function showRegister() {
+
+    document.getElementById("loginForm").style.display =
+        "none";
+
+    document.getElementById("registerForm").style.display =
+        "block";
+
+    document.getElementById("message").innerHTML =
+        "";
 
 }
 
