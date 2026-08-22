@@ -1483,6 +1483,9 @@ textarea:focus {
 
 <script>
 
+const FUNCTION_URL =
+  "https://xtzhidllwfteluyxoxva.supabase.co/functions/v1/bright-task";
+
 
 /* =========================
    OPTION BUTTONS
@@ -1495,33 +1498,51 @@ document
     const buttons =
       group.querySelectorAll(".option");
 
-
     buttons.forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      button.addEventListener("click", () => {
 
-          buttons.forEach(b =>
-            b.classList.remove("active")
-          );
+        buttons.forEach(b =>
+          b.classList.remove("active")
+        );
 
-          button.classList.add("active");
+        button.classList.add("active");
 
-        }
-      );
+      });
 
     });
 
   });
 
 
+/* =========================
+   GET SELECTED OPTION
+========================= */
+
+function getSelected(groupName) {
+
+  const group =
+    document.querySelector(
+      `[data-group="${groupName}"]`
+    );
+
+  if (!group) return "";
+
+  const active =
+    group.querySelector(".active");
+
+  return active
+    ? active.textContent.trim()
+    : "";
+
+}
+
 
 /* =========================
    CREATE SONG
 ========================= */
 
-function createSong() {
+async function createSong() {
 
   const idea =
     document
@@ -1541,13 +1562,206 @@ function createSong() {
   }
 
 
-  alert(
-    "Идея принята ✦\n\nСледующим шагом подключим настоящую AI-генерацию."
-  );
+  const genre =
+    getSelected("genre");
+
+  const mood =
+    getSelected("mood");
+
+  const voice =
+    getSelected("voice");
+
+  const tempo =
+    getSelected("tempo");
+
+
+  const button =
+    document.querySelector(
+      ".create-button"
+    );
+
+
+  if (button) {
+
+    button.disabled = true;
+
+    button.textContent =
+      "✦ СОЗДАЁМ ТРЕК...";
+
+  }
+
+
+  try {
+
+    const response =
+      await fetch(
+        FUNCTION_URL,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+
+            idea: idea,
+
+            genre: genre,
+
+            mood: mood,
+
+            voice: voice,
+
+            tempo: tempo
+
+          })
+
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    console.log(
+      "Ответ AI:",
+      result
+    );
+
+
+    if (!response.ok || !result.success) {
+
+      throw new Error(
+        result.error ||
+        "Не удалось создать песню"
+      );
+
+    }
+
+
+    /* =========================
+       RESULT
+    ========================= */
+
+    const audioUrl =
+      result.audio_url ||
+      result.output;
+
+
+    if (audioUrl) {
+
+      const player =
+        document.createElement(
+          "audio"
+        );
+
+      player.controls = true;
+
+      player.src = audioUrl;
+
+      player.style.width =
+        "100%";
+
+      player.style.marginTop =
+        "20px";
+
+
+      const download =
+        document.createElement(
+          "a"
+        );
+
+      download.href =
+        audioUrl;
+
+      download.download =
+        "moy-hit.mp3";
+
+      download.textContent =
+        "⬇️ Скачать песню";
+
+      download.style.display =
+        "block";
+
+      download.style.marginTop =
+        "15px";
+
+      download.style.color =
+        "white";
+
+
+      const card =
+        document.querySelector(
+          ".create-card"
+        );
+
+
+      if (card) {
+
+        card.appendChild(
+          player
+        );
+
+        card.appendChild(
+          download
+        );
+
+      }
+
+
+      alert(
+        "🎵 Твоя песня готова!"
+      );
+
+    } else {
+
+      alert(
+        "🎵 Запрос принят! AI начал создание песни."
+      );
+
+      console.log(
+        "Prediction ID:",
+        result.prediction_id
+      );
+
+    }
+
+
+  } catch (error) {
+
+    console.error(
+      "Ошибка:",
+      error
+    );
+
+
+    alert(
+      "Не удалось создать песню.\n\n" +
+      error.message
+    );
+
+
+  } finally {
+
+    if (button) {
+
+      button.disabled = false;
+
+      button.textContent =
+        "✦ СОЗДАТЬ ПЕСНЮ";
+
+    }
+
+  }
 
 }
 
 </script>
+
+
 
 
 </body>
