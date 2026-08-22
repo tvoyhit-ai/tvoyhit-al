@@ -1485,8 +1485,8 @@ textarea:focus {
 
 const FUNCTION_URL =
   "https://xtzhidllwfteluyxoxva.supabase.co/functions/v1/bright-task";
-
-
+const SUPABASE_KEY = 
+sb_publishable_GUf4hEMO-E7yNdD-BNZFhw_uhgcpRzK
 /* =========================
    OPTION BUTTONS
 ========================= */
@@ -1600,9 +1600,9 @@ async function createSong() {
           method: "POST",
 
           headers: {
-            "Content-Type":
-              "application/json"
-          },
+  "Content-Type": "application/json",
+  "apikey": SUPABASE_KEY
+},
 
           body: JSON.stringify({
 
